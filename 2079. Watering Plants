@@ -1,0 +1,21 @@
+  int wateringPlants(vector<int>& plants, int capacity) 
+    {
+     int steps=0;
+        int can=capacity;
+        for(int i=0;i<plants.size();i++)
+        {
+         if(plants[i]<=can)
+        {
+            steps++;
+             can=can-plants[i];
+        }
+        else if(plants[i]>can)
+        {
+            steps=steps+i;
+            can=capacity;
+            steps=steps+i+1;
+            can=can-plants[i];
+        }   
+        }
+        return steps;
+    }
