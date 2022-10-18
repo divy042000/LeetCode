@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int minPairSum(vector<int>& nums) {
+        
+     sort(nums.begin(),nums.end());
+        int diff=0;
+        for(auto i=0;i< (nums.size()/2);i++)
+        {
+          diff=max(diff,(nums[i]+nums[nums.size()-1-i]));    
+        }
+        return diff;
+    }
+};
