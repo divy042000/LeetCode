@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minimumSum(int num) {
+        vector<string> vect;
+     while(num>0)
+     {
+         int k=num%10;
+         vect.push_back(to_string(k));
+         num=num/10;
+     }
+       sort(vect.begin(),vect.end());
+       int sum=0;
+       for(auto i=0;i<2;i++)
+       {
+        string s;
+        s=s+vect[i]+vect[vect.size()-1-i];  
+        sum=sum+stoi(s);
+       }
+        return sum;
+     }
+};
