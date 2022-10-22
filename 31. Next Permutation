@@ -1,0 +1,31 @@
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        vector<int> nums1=nums;
+        sort(nums1.begin(),nums1.end());
+        if(nums1==nums)
+        {
+            int count=0;
+        do{
+            count++;
+            if(count==2)
+            {
+             break;   
+            }
+        }
+        while(next_permutation(nums.begin(),nums.end()));
+        }
+        else
+        {
+           int count=0;
+        do{
+            count++;
+            if(count==2)
+            {
+             break;   
+            }
+        }
+        while(next_permutation(nums.begin(),nums.end())); 
+        }
+    }
+};
