@@ -1,0 +1,11 @@
+class Solution {
+public:
+    vector<int> buildArray(vector<int>& nums) {
+        vector<int> nums1;
+        for(auto i=0;i<nums.size();i++)
+        {
+            nums1.push_back(nums[nums[i]]);
+        }
+        return nums1;
+    }
+};
