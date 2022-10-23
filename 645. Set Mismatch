@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums) 
+    {
+       unordered_map<int,int> mp;
+        for(auto i=0;i<nums.size();i++)
+        {
+            mp[nums[i]]++;
+        }
+        int n=nums.size();
+        vector<int> vec;
+        for(auto i=1;i<=n;i++)
+        {
+            if(mp[i]>1)
+            {
+             vec.push_back(i);   
+            }
+        }
+         for(auto i=1;i<=n;i++)
+        {
+            if(mp[i]==0)
+            {
+             vec.push_back(i);   
+            }
+        }
+        return vec;
+    }
+};
