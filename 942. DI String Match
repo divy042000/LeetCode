@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<int> diStringMatch(string s) {
+     int n=s.size();
+     int a=0;
+        vector<int> Permute_Number;
+        for(auto i=0;i<s.size();i++)
+        {
+            if(s[i]=='I')
+            {
+                Permute_Number.push_back(a++);
+            }
+            else
+            {
+                Permute_Number.push_back(n--);
+            }
+        }
+        if(s[s.size()-1]=='I')
+        {
+            Permute_Number.push_back(a++);
+        }
+        else
+        {
+            Permute_Number.push_back(n--);
+        }
+        return Permute_Number;
+    }
+};
