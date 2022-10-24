@@ -1,0 +1,23 @@
+class Solution {
+public:
+    void duplicateZeros(vector<int>& arr) {
+        vector<int> duplicates;
+     for(auto i=0;i<arr.size();i++)
+     {
+         if(arr[i]==0)
+         {
+             duplicates.push_back(0);
+             duplicates.push_back(0);
+         }
+         else
+         {
+             duplicates.push_back(arr[i]);
+         }
+     }
+        for(auto i=0;i<arr.size();i++)
+        {
+            arr[i]=duplicates[i];
+        }
+       // return duplicates;
+    }
+};
