@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int balancedStringSplit(string s) {
+        int string_count=0;
+        int count_it=0;
+     for(auto i=0;i<s.size();i++)
+     {
+         if(s[i]=='R')
+         {
+             count_it++;
+         }
+         else
+         {
+              count_it--;      
+         }
+         if(count_it==0)
+         {
+             string_count++;
+         }
+     }
+        return string_count;
+    }
+};
