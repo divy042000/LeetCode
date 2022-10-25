@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2) {
+     string str,str1;
+        for(auto i=0;i<word1.size();i++)
+        {
+            str=str+word1[i];
+        }
+         for(auto i=0;i<word2.size();i++)
+        {
+            str1=str1+word2[i];
+        }
+        if(str1==str){return true;}else{return false;}
+    }
+};
