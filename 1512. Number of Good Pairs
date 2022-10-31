@@ -1,0 +1,30 @@
+class Solution {
+public:
+ int factorial(int n)
+{
+    if (n < 0)
+        return (-1); /*Wrong value*/
+    if (n == 0)
+        return (1); /*Wrong value*/
+    else
+    {
+      return (n * factorial(n - 1));
+    }
+}
+    int numIdenticalPairs(vector<int>& nums)
+    {
+        int count=0;
+        unordered_map<int,int> mp;
+        for(auto i=0;i<nums.size();i++)
+        {
+            mp[nums[i]]++;
+        }
+        int sum=0;
+        for(auto x:mp)
+        {
+            int k=x.second;
+            sum=sum+(k*(k+1))/2-k;
+        }
+        return sum;
+    }
+};
