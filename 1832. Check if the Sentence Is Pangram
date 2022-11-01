@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool checkIfPangram(string sentence) {
+        unordered_map<char,int> new_map;
+        for(auto i=0;i<sentence.size();i++)
+        {
+            new_map[sentence[i]]++;
+        }
+        cout<<new_map.size()<<endl;
+         if(new_map.size()==26)
+         {
+             return true;
+         }
+        return false;
+    }
+};
