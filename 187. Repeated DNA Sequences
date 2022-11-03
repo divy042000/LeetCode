@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<string> findRepeatedDnaSequences(string s) {
+        vector<string> dna;
+
+        
+        if(s.length()>=10)
+        {
+        unordered_map<string,int> repeated_sequences;
+          for(auto i=0;i<s.length()-9;i++)
+          {
+          string str=s.substr(i,10);
+           //cout<<str<<endl;
+          repeated_sequences[str]++; 
+          }
+         for(auto x:repeated_sequences)
+            {
+            if(x.second>1)
+            {
+                //cout<<x.first<<endl;
+             dna.push_back(x.first);   
+            }
+            }
+        return dna;   
+        }
+        else
+        {
+            return dna;
+        }
+       
+    }
+};
