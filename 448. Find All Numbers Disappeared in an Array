@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        unordered_map<int,int> first_map;
+        vector<int> my_vector;
+        for(auto i=0;i<nums.size();i++)
+        {
+            first_map[nums[i]]++;
+        }
+        for(auto i=1;i<=nums.size();i++)
+        {
+            if(first_map[i]==0)
+            {
+            //cout<<first_map[i]<<endl;
+            my_vector.push_back(i);    
+            }
+        }
+        return my_vector;
+    }
+};
