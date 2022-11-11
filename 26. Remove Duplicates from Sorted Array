@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int count=1;
+        if(nums.size()!=1)
+        {
+           int k=nums[0];
+       for(auto i=1;i<nums.size();i++)
+       {
+           if(k!=nums[i])
+           {
+           k=nums[i];
+           count++;
+           }
+           else
+           {
+           nums[i]=101;
+           }
+       }
+        sort(nums.begin(),nums.end());
+        return count;
+        }
+        else
+        {
+            return count;
+        }
+                
+    }
+};
