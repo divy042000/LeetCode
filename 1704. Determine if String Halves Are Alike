@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool halvesAreAlike(string s) {
+     int vowels_1=0,vowels_2=0;
+        for(auto i=0;i<s.size()/2;i++)
+        {
+            if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o'|| s[i]=='u' || s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U')
+            {
+              vowels_1++;   
+            }
+        }
+        for(auto i=s.size()/2;i<s.size();i++)
+        {
+            if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o'|| s[i]=='u' || s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U')
+            {
+              vowels_2++;   
+            }
+        }
+        cout<<vowels_1<<endl;
+        cout<<vowels_2<<endl;
+        return vowels_1==vowels_2;
+    }
+};
