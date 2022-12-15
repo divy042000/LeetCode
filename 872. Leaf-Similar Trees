@@ -1,0 +1,65 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> vec;
+    vector<int> vec1;
+    void travel(TreeNode *root)
+    {
+        if(!root){return;}
+        if(!root->right && !root->left)
+        {
+         vec.push_back(root->val);
+         return;   
+        }
+        if(root->left)
+        {
+         travel(root->left);
+        }
+        if(root->right)
+        {
+      travel(root->right);
+        }  
+    }
+    void travelit(TreeNode *root)
+    {
+        if(!root){return;}
+        if(!root->right && !root->left)
+        {
+         vec1.push_back(root->val);
+         return;   
+        }
+        if(root->left)
+        {
+         travelit(root->left);
+        }
+        if(root->right)
+        {
+      travelit(root->right);
+        }  
+    }
+    void print(vector<int> v)
+    {
+        for(auto i=0;i<v.size();i++)
+        {
+            cout<<v[i]<<" ";
+        }
+        cout<<endl;
+    }
+    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+     travel(root1);
+     travelit(root2);
+     print(vec);
+     print(vec1);
+     return vec==vec1;
+    }
+};
