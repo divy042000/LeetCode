@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string reverseParentheses(string s)
+    {
+    stack<int> stck;
+    string answer="";
+    for(auto i=0;i<s.size();i++)
+    {
+        if(s[i]=='(')
+        {
+            stck.push(i);
+        }
+        else if(s[i]==')')
+        {
+         reverse(s.begin()+stck.top()+1,s.begin()+i);
+         stck.pop();
+        }
+    }
+    for(auto i=0;i<s.size();i++)
+    {
+        if(s[i]!='(' && s[i]!=')')
+        {
+            answer+=s[i];
+        }
+    }
+    return answer;  
+    }
+};
