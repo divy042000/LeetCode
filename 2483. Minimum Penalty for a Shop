@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int bestClosingTime(string customers) {
+        int countY=0;
+        int countN=0;
+        for(auto i=0;i<customers.size();i++)
+        {
+            if(customers[i]=='Y')
+            {
+                countY++;
+            }
+        }
+        int minima=INT_MAX;
+        int index=0;
+        minima=min(countY,minima);
+        for(auto i=0;i<customers.size();i++)
+        {
+            if(customers[i]=='Y')
+            {
+                countY--;
+            }
+            else if(customers[i]=='N')
+            {
+                countN++;
+            }
+            int countP=countY+countN;
+            if(countP<minima)
+            {
+               index=i+1;
+               minima=min(countP,minima);
+            }
+        }
+        return index;
+    }
+};
