@@ -1,0 +1,43 @@
+class Solution {
+public:
+    vector<vector<int>> adjlist(vector<vector<int>>& prereq, int courses) {
+        vector<vector<int>> vec(courses);
+        vector<int> indegree(courses, 0);
+
+        for (auto& edge : prereq) {
+            vec[edge[0]].emplace_back(edge[1]);
+            indegree[edge[1]]++;
+        }
+
+        return vec;
+    }
+
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+        vector<int> indegree(numCourses, 0);
+        vector<vector<int>> adjacency = adjlist(prerequisites, numCourses);
+        vector<int> answer;
+        queue<int> mq;
+
+        for (auto i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
+                mq.push(i);
+            }
+        }
+
+        while (!mq.empty()) {
+            int node = mq.front();
+            mq.pop();
+            answer.emplace_back(node);
+
+            for (auto& x : adjacency[node]) {
+                if (--indegree[x] == 0) {
+                    mq.push(x);
+                }
+            }
+        }
+
+        reverse(answer.begin(), answer.end());
+
+        return (answer.size() == numCourses) ? answer : vector<int>{};
+    }
+};
