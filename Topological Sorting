@@ -1,0 +1,43 @@
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+vector<int> topologicalSort(vector<vector<int>> &graph, int edges, int nodes) {
+    vector<vector<int>> g(nodes+1);
+    for(vector<int> edge : graph)
+        g[edge[0]].push_back(edge[1]);
+    
+    
+    queue<int> mq;
+    int size = g.size();
+    vector<int> indegree(nodes, 0);
+
+    for (auto i = 0; i < size; i++) {
+        vector<int> vec = g[i];
+        for (auto j = 0; j < vec.size(); j++) {
+            indegree[vec[j]]++; // Fix 1: Use vec[j] instead of graph
+        }
+    }
+
+    for (auto i = 0; i < nodes; i++) { // Fix 2: Use nodes instead of indegree
+        if (indegree[i] == 0) {
+            mq.push(i);
+        }
+    }
+
+    vector<int> answer;
+    while (!mq.empty()) {
+        int node = mq.front();
+        answer.push_back(node);
+        mq.pop();
+        for (auto it : g[node]) {
+            indegree[it]--;
+            if (indegree[it] == 0) {
+                mq.push(it);
+            }
+        }
+    }
+
+    return answer;
+}
