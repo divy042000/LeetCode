@@ -1,0 +1,48 @@
+class Solution {
+public:
+    vector<vector<int>> adjlist(vector<vector<int>>& pre, int& course) {
+        vector<vector<int>> adj(course);
+        for (auto& edge : pre) {
+            adj[edge[0]].push_back(edge[1]);
+        }
+        return adj;
+    }
+
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        vector<vector<int>> adjacency = adjlist(prerequisites, numCourses);
+        vector<int> indegree(numCourses, 0);
+
+        for (auto& vec : adjacency) {
+            for (auto& it : vec) {
+                indegree[it]++;
+            }
+        }
+
+        queue<int> mq;
+        for (auto i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
+                mq.push(i);
+            }
+        }
+
+        while (!mq.empty()) {
+            int top = mq.front();
+            mq.pop();
+            for (auto& x : adjacency[top]) {
+                indegree[x]--;
+                if (indegree[x] == 0) {
+                    mq.push(x);
+                }
+            }
+        }
+
+        // Check if all indegrees are zero during the traversal
+        for (auto& degree : indegree) {
+            if (degree != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+};
