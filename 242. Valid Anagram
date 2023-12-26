@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+     unordered_map<char,int> mp;
+     for(auto i=0;i<t.size();i++)
+     {
+     mp[t[i]]++;  
+     }    
+     for(auto i=0;i<s.size();i++)
+     {
+         mp[s[i]]--;
+     }
+     for(auto x:mp)
+     {
+         if(x.second!=0)
+         {
+             return false;
+         }
+     }
+     return true;
+    }
+};
