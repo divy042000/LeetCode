@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        int size=s.size();
+        if(s==goal){return true;}
+        if(s.size()==1)
+        {
+            if(s!=goal)
+            {return false;}
+        }
+        int i=0;
+        int size1=s.size();
+      while(size>0)
+      {
+        string s1=s.substr(0,i+1);
+        string s2=s.substr(i+1,size1-(i+1));
+        string s3=s2+s1;
+        cout<<s3<<endl;
+          if(s3==goal){return true;}
+          i++;
+          size--;
+      }  
+      return false;
+    }
+};
