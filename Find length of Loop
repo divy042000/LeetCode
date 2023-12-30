@@ -1,0 +1,44 @@
+/**
+ * Definition of linked list:
+ *
+ * class Node {
+ * public:
+ *      int data;
+ *      Node *next;
+ *
+ *      Node(int data) {
+ *          this->data = data;
+ *          this->next = NULL;
+ *      }
+ * };
+ *
+ *************************************************************************/
+#include<bits/stdc++.h>
+int lengthOfLoop(Node *head) {
+    vector<Node*> list;
+    Node* pointer=head;
+    unordered_map<Node*,bool> val;
+    while(pointer!=NULL)
+    {
+        if(val[pointer]==true)
+        {
+            break;
+        }
+        val[pointer]=true;
+        list.push_back(pointer);
+        pointer=pointer->next;
+        if(pointer==NULL){return 0;}
+    }
+    int count=0;
+    int size=list.size();
+    for(auto X:list)
+    {
+       if(X==pointer)
+       {
+           return size-count;
+       }
+              count++;
+
+    }
+    
+}
