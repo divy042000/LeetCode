@@ -1,0 +1,14 @@
+class Solution {
+public:
+    ListNode* reverseit(ListNode* striker, ListNode* pointer) {
+        if(pointer==NULL){return striker;}
+        ListNode* nxt=pointer->next;
+        pointer->next=striker;
+        return reverseit(pointer,nxt);
+    }
+
+    ListNode* reverseList(ListNode* head) {
+           ListNode* dummyhead=NULL;
+           return reverseit(dummyhead,head);
+    }
+};
