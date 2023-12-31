@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int maxLengthBetweenEqualCharacters(string s) {
+       int maxima=-1;
+       unordered_map<char,int> charmap;
+       for(auto i=0;i<s.size();i++)
+       {     
+           if(charmap.find(s[i])!=charmap.end())
+           {
+               maxima=max(maxima,i-charmap[s[i]]-1);
+           }
+           else
+           {
+           charmap[s[i]]=i;
+           }
+       }
+       return maxima;
+    }
+};
